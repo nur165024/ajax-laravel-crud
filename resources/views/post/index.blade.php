@@ -80,32 +80,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('.product_create').click(function () {
-            var title = $('#title').val();
-            var details = $('#details').val();
-
-            $.ajax({
-                type: 'POST',
-                url: 'post/create',
-                dataType: 'json',
-                data: {title:title,details:details},
-                success: function (data) {
-                    $('#create_post').trigger('reset');
-                    $('#Create-post .close').click();
-                    window.location.reload();
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('frontend/ajax.js') }}"></script>
 </body>
 </html>
