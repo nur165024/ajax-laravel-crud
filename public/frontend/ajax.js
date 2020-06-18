@@ -5,6 +5,7 @@ $(function () {
         }
     });
 
+    // post create code
     $('.product_create').click(function () {
         var title = $('#title').val();
         var details = $('#details').val();
@@ -26,6 +27,7 @@ $(function () {
         });
     });
 
+    // edit code
     $('body').on('click','#edit_data',function () {
         var post_id = $(this).data('id');
 
@@ -42,6 +44,7 @@ $(function () {
         });
     });
 
+    // update code
     $('.product_update').click(function () {
         var title = $('#edit_post #title').val();
         var details = $('#edit_post #details').val();
@@ -60,6 +63,21 @@ $(function () {
             },
             error: function (data) {
                 console.log(data);
+            }
+        });
+    });
+
+    // delete code
+    $('#post_delete').click(function () {
+        var post_id = $(this).data('id');
+
+        $.ajax({
+            type: 'DELETE',
+            dataType: 'json',
+            url: 'post/delete/'+post_id,
+            data: post_id,
+            success: function (data) {
+                window.location.reload();
             }
         });
     });

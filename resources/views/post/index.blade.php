@@ -34,7 +34,7 @@
                                     <td>{{ $post->details }}</td>
                                     <td>
                                         <a href="javascript:void(0)" class="btn btn-sm btn-info" data-id="{{ $post->id }}" id="edit_data" data-toggle="modal" data-target="#Edit-post">Edit</a>
-                                        <a href="javascript:void(0)" class="btn btn-sm btn-danger">Delete</a>
+                                        <a onclick="return confirm('Are You Sure')" href="#" class="btn btn-sm btn-danger" data-id="{{ $post->id }}" id="post_delete" >Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -76,6 +76,7 @@
             </div>
         </div>
         <!-- Modal post create -->
+
         <!-- Modal post edit -->
         <div class="modal fade" id="Edit-post">
             <div class="modal-dialog" role="document">

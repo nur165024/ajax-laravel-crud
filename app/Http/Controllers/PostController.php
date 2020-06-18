@@ -44,4 +44,14 @@ class PostController extends Controller
             'post'=>$post,
         ]);
     }
+
+    public function delete($id)
+    {
+        $post = Post::destroy($id);
+
+        return response()->json([
+            'error'=>false,
+            'post'=>$post,
+        ]);
+    }
 }
