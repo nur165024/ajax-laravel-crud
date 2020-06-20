@@ -26,15 +26,15 @@
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="post_data">
                             @foreach($posts as $post)
                                 <tr>
                                     <th scope="row">{{ $post->id }}</th>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->details }}</td>
                                     <td>
-                                        <a href="javascript:void(0)" class="btn btn-sm btn-info" data-id="{{ $post->id }}" id="edit_data" data-toggle="modal" data-target="#Edit-post">Edit</a>
-                                        <a onclick="return confirm('Are You Sure')" href="#" class="btn btn-sm btn-danger" data-id="{{ $post->id }}" id="post_delete" >Delete</a>
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-info" data-id="{{ $post->id }}" id="edit_data" data-toggle="modal" data-target="#Edit-post">Edit</a>
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-danger" data-id="{{ $post->id }}" id="post_delete" >Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

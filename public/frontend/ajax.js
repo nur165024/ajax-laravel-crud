@@ -68,7 +68,7 @@ $(function () {
     });
 
     // delete code
-    $('#post_delete').click(function () {
+    $('body').on('click','#post_delete',function () {
         var post_id = $(this).data('id');
 
         $.ajax({
@@ -77,8 +77,36 @@ $(function () {
             url: 'post/delete/'+post_id,
             data: post_id,
             success: function (data) {
+                console.log(data);
                 window.location.reload();
-            }
+            },
         });
     });
+
+    //ajax data get no reload
+    // setInterval(function () {
+    //     $.ajax({
+    //         url:'post',
+    //         dataType:'json',
+    //         type: 'GET',
+    //         success: function (data) {
+    //             if (data.posts.length > 0){
+    //                 var posts_data = '';
+    //                 for (var i = 0; i < data.posts.length; i++){
+    //                     posts_data += '<tr>\n' +
+    //                                     '<th scope="row">'+data.posts[i]['id']+'</th>\n' +
+    //                                     '<td>'+data.posts[i]['title']+'</td>\n' +
+    //                                     '<td>'+data.posts[i]['details']+'</td>\n' +
+    //                                     '<td>\n' +
+    //                                     '    <a href="javascript:void(0)" class="btn btn-sm btn-info" data-id="'+data.posts[i]['id']+'" id="edit_data" data-toggle="modal" data-target="#Edit-post">Edit</a>\n' +
+    //                                     '    <a href="javascript:void(0)" class="btn btn-sm btn-danger" data-id="'+data.posts[i]['id']+'" id="post_delete" >Delete</a>\n' +
+    //                                     '</td>\n' +
+    //                                 '</tr>';
+    //                     $('#post_data').empty();
+    //                     $('#post_data').append(posts_data);
+    //                 }
+    //             }
+    //         }
+    //     });
+    // }, 15000);
 });

@@ -7,11 +7,17 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data['posts'] = Post::orderBy('id','desc')->get();
+        $posts = Post::orderBy('id','desc')->get();
 
-        return view('post.index',$data);
+        if ($request->ajax()){
+            return response()->json([
+                'posts'=>$posts,
+            ]);
+        }
+
+        return view('post.index',compact('posts'));
     }
 
     public function store(Request $request)
